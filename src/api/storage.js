@@ -54,6 +54,36 @@ export const removeAnthropometry = async () => {
   }
 };
 
+// =======================================================
+// 🔹 Funções para cadastro de paciente
+// =======================================================
+export const savePatient = async (data) => {
+  try {
+    await Storage.setItem(KEYS.PATIENT, JSON.stringify(data));
+    console.log("Dados do paciente salvos localmente.");
+  } catch (err) {
+    console.error("Erro ao salvar paciente local:", err);
+  }
+};
+
+export const loadPatient = async () => {
+  try {
+    const json = await Storage.getItem(KEYS.PATIENT);
+    return json ? JSON.parse(json) : null;
+  } catch (err) {
+    console.error("Erro ao carregar paciente local:", err);
+    return null;
+  }
+};
+
+export const removePatient = async () => {
+  try {
+    await Storage.removeItem(KEYS.PATIENT);
+  } catch (err) {
+    console.error("Erro ao remover paciente local:", err);
+  }
+};
+
 // 🔹 Funções para fila de sincronização
 export const addToQueue = async (item) => {
   try {

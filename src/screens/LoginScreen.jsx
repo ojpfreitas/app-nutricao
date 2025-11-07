@@ -14,7 +14,7 @@ export default function LoginScreen({ navigation }) {
     }
 
     // Aqui você pode colocar sua lógica de autenticação (API, banco, etc)
-    if (email === "teste@email.com" && senha === "123456") {
+    if (email === "teste" && senha === "123") {
       navigation.navigate("Home"); // ou outra tela do app
     } else {
       alert("Erro, E-mail ou senha incorretos!");

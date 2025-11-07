@@ -8,21 +8,7 @@
       "isTrainer": false
     }
   ],
-  "anthropometries": [
-  ],
-  "workouts": [
-    {
-      "id": "1",
-      "title": "Full Body",
-      "difficulty": "medium",
-      "exercises": [
-        "squat",
-        "pushup"
-      ],
-      "durationMinutes": 40,
-      "active": true
-    }
-  ],
+  "anthropometries": [],
   "meals": [
     {
       "id": "1",

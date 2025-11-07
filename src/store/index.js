@@ -1,6 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import anthropometryReducer from "./anthropometrySlice";
 import diaryReducer from "./diarySlice";
+import patientReducer from "./patientSlice";
 
 // Slice extra opcional para mensagem do app
 const appSlice = createSlice({
@@ -21,6 +22,7 @@ export const store = configureStore({
     app: appSlice.reducer,
     anthropometry: anthropometryReducer,
     diario: diaryReducer,
+    paciente: patientReducer,
   },
 });
 

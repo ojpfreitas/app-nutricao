@@ -3,11 +3,7 @@ import axios from "axios";
 import {saveAnthropometry, loadAnthropometry, removeAnthropometry } from "./storage";
 
 // Define baseURL de acordo com a plataforma
-const baseURL = Platform.select({
-  web: "http://localhost:3000",
-  android: "http://10.0.2.2:3000",
-  ios: "http://localhost:3000",
-});
+const baseURL = "http://localhost:3001";
 
 const API = axios.create({ baseURL });
 
