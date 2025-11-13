@@ -56,26 +56,61 @@ export default function RegisterPatientScreen({ navigation }) {
 
   // 🔸 Ao enviar o formulário
   const onSubmit = async (data) => {
-    console.log("📦 Dados do paciente:", data);
-    dispatch(setPatient(data)); // salva no Redux
+  //   console.log("✅ Função onSubmit foi chamada");
+  //   dispatch(setPatient(data)); // salva no Redux
 
-    try {
-      const synced = await syncPatientWithServer();
+  //   try {
+  //     const synced = await syncPatientWithServer();
 
-      if (synced) {
-        Alert.alert("✅ Sucesso", "Paciente cadastrado no servidor!");
-        await removePatient();
-        reset();
-      } else {
-        await savePatient(data);
-        await addToQueue(data);
-        Alert.alert("📶 Offline", "Sem conexão. Paciente salvo localmente.");
-      }
-    } catch (err) {
-      console.error("❌ Erro ao salvar paciente:", err);
-      Alert.alert("Erro", "Não foi possível cadastrar o paciente.");
+  //     if (synced) {
+  //       Alert.alert("✅ Sucesso", "Paciente cadastrado no servidor!");
+  //       await removePatient();
+  //       reset();
+  //     } else {
+  //       await savePatient(data);
+  //       await addToQueue(data);
+  //       Alert.alert("📶 Offline", "Sem conexão. Paciente salvo localmente.");
+  //     }
+  //   } catch (err) {
+  //     console.error("❌ Erro ao salvar paciente:", err);
+  //     Alert.alert("Erro", "Não foi possível cadastrar o paciente.");
+  //   }
+  // };
+  // debugger;
+
+  console.log("===== onSubmit iniciado =====");
+  console.log("Dados do formulário:", data);
+
+  // Atualiza o Redux sempre, antes de salvar local ou server
+  dispatch(setPatient(data));
+  console.log("Redux atualizado com os dados.");
+
+  try {
+    // Tenta sincronizar com o servidor
+    console.log("Tentando enviar para o servidor...");
+    const synced = await syncPatientWithServer();
+
+    if (synced) {
+      console.log("✅ Dados enviados para o servidor!");
+      Alert.alert("Sucesso", "Dados enviados para o servidor!");
+
+      // Limpa local e form
+      await removePatient();
+      // reset();
+    } else {
+      console.log("⚠️ Sem conexão. Salvando localmente...");
+      await savePatient(data);
+      addToQueue(data); // adiciona à fila de sync
+      Alert.alert("Offline", "Sem conexão. Dados salvos localmente.");
+      reset();
     }
-  };
+  } catch (err) {
+    console.error("❌ Erro ao salvar avaliação:", err);
+    Alert.alert("Erro", "Não foi possível salvar os dados.");
+  }
+
+  console.log("===== onSubmit finalizado =====");
+};
 
   return (
     <View style={styles.container}>
@@ -100,7 +135,7 @@ export default function RegisterPatientScreen({ navigation }) {
             <Field label="Observações" name="observations" control={control} multiline />
 
             <View style={styles.orangeButton}>
-              <OrangeButton title="Salvar Cadastro" onPress={handleSubmit(onSubmit)} />
+              <OrangeButton title="Salvar Cadastro" onPress={() => handleSubmit(onSubmit)()}/>
             </View>
           </ScrollView>
         </View>
