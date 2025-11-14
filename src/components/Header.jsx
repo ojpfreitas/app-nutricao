@@ -23,8 +23,8 @@ export default function Header({ title, navigation }) {
 
       {/* Botão direito com ícone de presente usando Paper */}
       <Appbar.Action
-        icon="account-circle" // Usando o ícone de presente do Paper
-        onPress={() => navigation.navigate("Login")}
+        //icon="account-circle" // Usando o ícone de presente do Paper
+       //onPress={() => navigation.navigate("Login")}
       />
     </View>
   );

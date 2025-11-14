@@ -1,10 +1,10 @@
 import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
-import { homeIcon, metricIcon, burguerIcon, cartIcon, diaryIcon } from "../../assets";
+import { homeIcon, metricIcon, burguerIcon, supIcon, diaryIcon } from "../../assets";
 import PropTypes from "prop-types";
 
 
 export default function Footer({ navigation }) {
-  const icons = [homeIcon, metricIcon, burguerIcon, cartIcon, diaryIcon];
+  const icons = [homeIcon, metricIcon, burguerIcon, supIcon, diaryIcon];
 
 
   const onPressHandlers = [

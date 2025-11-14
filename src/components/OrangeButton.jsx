@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, Alert } from 'react-native';
 import PropTypes from "prop-types";
 
 const OrangeButton = ({ title, onPress }) => {

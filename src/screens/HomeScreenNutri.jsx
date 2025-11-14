@@ -10,6 +10,7 @@ import {
   supIcon,
   metricIcon,
   diaryIcon,
+  registerIcon,
 } from "../../assets";
 
 const icons = {
@@ -17,13 +18,15 @@ const icons = {
   sup: supIcon,
   metric: metricIcon,
   diary: diaryIcon,
+  register: registerIcon,
 };
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreenNutri({ navigation }) {
   const { height } = useWindowDimensions();
   const isScrollable = height <= 653;
 
   const buttons = [
+    { icon: "register", screen: "Register", imageSize: 0.78 },
     { icon: "fork-knife", screen: "Meals", imageSize: 0.78 },
     { icon: "sup", screen: "Store", imageSize: 0.9 },
     { icon: "metric", screen: "Anthropometry", imageSize: 0.87 },
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
   homeButton: { marginBottom: 16 },
 });
 
-HomeScreen.propTypes = {
+HomeScreenNutri.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
